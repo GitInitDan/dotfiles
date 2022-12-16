@@ -75,27 +75,11 @@ activate() {
   done
 }
 
-# Perlbrew
-source ~/perl5/perlbrew/etc/bashrc
-
 # Node/NPM
 export NODE_PATH=/usr/local/lib/node_modules
 
-# Compiled overrides for mysql/openssl.
-#export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib -L/usr/local/opt/mysql-client@5.7/lib"
-#export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include -I/usr/local/opt/mysql-client@5.7/include"
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
-
 # Postgres (Homebrew)
 PATH="$PATH:/usr/local/opt/postgresql\@14/lib/postgresql\@14/"
-
-# Sublime
-PATH="$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
-
-# Google Cloud SDK
-if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then source "$HOME/google-cloud-sdk/path.bash.inc"; fi
-if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then source "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
 # Helper to collapse rails routes after a grep.
 alias collapse_routes="sed -E 's/^[[:space:]]+([A-Z])/  _  \1/g' | sed -E 's/^(.)/  \1/g' | align"
@@ -106,12 +90,6 @@ alias gem_licenses='for i in `gem list | cut -d" " -f1`; do printf "%38s `gem sp
 # RVM
 PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-# Java
-PATH="/usr/local/opt/openjdk/bin:$PATH"
-
-# Rust
-. "$HOME/.cargo/env"
 
 export PATH
 

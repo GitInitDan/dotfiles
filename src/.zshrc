@@ -48,21 +48,6 @@ bindkey "^?" backward-delete-char  # Fix backspace bug.
 alias dockervm='screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty'
 alias dockerclean='docker rm `docker ps -aq`; docker volume rm `docker volume ls -q`; docker imagerm `docker image ls -aq`;'
 
-# Python Environments
-PATH="~/.pyenv:$PATH"
-eval "$(pyenv init -)"
-activate() {
-  for f in ./venv ./.venv ./env ./.env; do
-    if [ -d $f ]; then
-      . "$f/bin/activate"
-      break
-    fi
-  done
-}
-
-# Perlbrew
-source ~/perl5/perlbrew/etc/bashrc
-
 # Node/NPM
 export NODE_PATH=/usr/local/lib/node_modules
 
@@ -75,10 +60,6 @@ export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 # Postgres (Homebrew)
 PATH="$PATH:/usr/local/opt/postgresql\@14/lib/postgresql\@14/"
 
-# Google Cloud SDK
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then source "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then source "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
-
 # Helper to collapse rails routes after a grep.
 alias collapse_routes="sed -E 's/^[[:space:]]+([A-Z])/  _  \1/g' | sed -E 's/^(.)/  \1/g' | align"
 
@@ -88,12 +69,6 @@ alias gem_licenses='for i in `gem list | cut -d" " -f1`; do printf "%38s `gem sp
 # RVM
 PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# Java
-PATH="/usr/local/opt/openjdk/bin:$PATH"
-
-# Rust
-. "$HOME/.cargo/env"
 
 export PATH
 
